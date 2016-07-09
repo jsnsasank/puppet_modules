@@ -1,4 +1,8 @@
-#	$OpenBSD: sshd_config,v 1.93 2014/01/10 05:59:19 djm Exp $
+#       $OpenBSD: sshd_config,v 1.93 2014/01/10 05:59:19 djm Exp $
+# ---
+# sshd config maintained by Puppet. 
+# Build by : Lal Pasha Shik
+# ---
 
 # This is the sshd server system-wide configuration file.  See
 # sshd_config(5) for more information.
@@ -20,7 +24,7 @@
 #ListenAddress ::
 
 # The default requires explicit activation of protocol 1
-#Protocol 2
+Protocol 2
 
 # HostKey for protocol version 1
 #HostKey /etc/ssh/ssh_host_key
@@ -56,7 +60,7 @@ SyslogFacility AUTHPRIV
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
 # but this is overridden so installations will only check .ssh/authorized_keys
-AuthorizedKeysFile	.ssh/authorized_keys
+AuthorizedKeysFile      .ssh/authorized_keys
 
 #AuthorizedPrincipalsFile none
 
@@ -71,11 +75,11 @@ AuthorizedKeysFile	.ssh/authorized_keys
 # RhostsRSAAuthentication and HostbasedAuthentication
 #IgnoreUserKnownHosts no
 # Don't read the user's ~/.rhosts and ~/.shosts files
-#IgnoreRhosts yes
+IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
 #PasswordAuthentication yes
-#PermitEmptyPasswords no
+PermitEmptyPasswords no
 PasswordAuthentication yes
 
 # Change to no to disable s/key passwords
@@ -120,7 +124,7 @@ X11Forwarding yes
 #PrintLastLog yes
 #TCPKeepAlive yes
 #UseLogin no
-UsePrivilegeSeparation sandbox		# Default for new installations.
+UsePrivilegeSeparation sandbox          # Default for new installations.
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
@@ -134,7 +138,7 @@ UsePrivilegeSeparation sandbox		# Default for new installations.
 #VersionAddendum none
 
 # no default banner path
-#Banner none
+Banner /etc/issue
 
 # Accept locale-related environment variables
 AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
@@ -143,11 +147,11 @@ AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
 
 # override default of no subsystems
-Subsystem	sftp	/usr/libexec/openssh/sftp-server
+Subsystem       sftp    /usr/libexec/openssh/sftp-server
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
-#	X11Forwarding no
-#	AllowTcpForwarding no
-#	PermitTTY no
-#	ForceCommand cvs server
+#       X11Forwarding no
+#       AllowTcpForwarding no
+#       PermitTTY no
+#       ForceCommand cvs server

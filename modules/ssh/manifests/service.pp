@@ -1,5 +1,5 @@
 class ssh::service {
-  servuce { "sshd":
+  service { "sshd":
     ensure 	=> 'running',
     enable	=>  true,
     require	=> Class["ssh::config"],
