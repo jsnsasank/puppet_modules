@@ -5,6 +5,18 @@ node 'cislab.ucmo.edu' {
 
 node 'cislab2.ucmo.edu' {
   hiera_include('classes')
+
+  apache::vhost { "app1":
+    port    => 82,
+    docroot => "/var/www/app1",
+  }
+  
+  pashaapache::vhost { "pasha":
+    port     => 81,
+    docroot  => '/var/www/pasha',
+    ssl      => false,
+    priority => 10,
+  }
 } 
 
 class linux {
